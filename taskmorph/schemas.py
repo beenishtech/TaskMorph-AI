@@ -2,7 +2,7 @@ from typing import TypedDict, List, Literal
 from pydantic import BaseModel
 
 
-# Gemini se jo structured output chahiye
+# Structured output formats expected from Gemini
 class TaskList(BaseModel):
     tasks: List[str]
 
@@ -16,7 +16,7 @@ class PrioritizedList(BaseModel):
     items: List[PrioritizedTask]
 
 
-# LangGraph ki shared state (har node isse padhta/update karta hai)
+# LangGraph shared state (every node reads and updates this)
 class State(TypedDict):
     user_input: str
     tasks: List[str]
